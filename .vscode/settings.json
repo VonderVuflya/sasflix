@@ -1,0 +1,37 @@
+{
+  // -------------------------
+  // code-style and formatting
+  "eslint.format.enable": true,
+  "stylelint.enable": true,
+  "scss.validate": true,
+  // -------------------------
+
+  // ---------------
+  // editor settings
+  "editor.formatOnSave": true, // форматирует код при сохранении
+  "editor.formatOnPaste": false, // форматирует код при вставке (ctrl+v)
+  "editor.formatOnSaveMode": "modifications", // форматирует только отредактированный код, а не весь файл
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
+  },
+  "editor.unicodeHighlight.allowedLocales": { "ru": true },
+
+  // bracketsPairColorize
+  "editor.guides.bracketPairs": true,
+  "editor.bracketPairColorization.enabled": true,
+
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "[vue]": { "editor.defaultFormatter": "dbaeumer.vscode-eslint" },
+  "[javascript]": { "editor.defaultFormatter": "dbaeumer.vscode-eslint" },
+  "[typescript]": { "editor.defaultFormatter": "dbaeumer.vscode-eslint" },
+  "[postcss]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[scss]": { "editor.defaultFormatter": "stylelint.vscode-stylelint" },
+  "[css]": { "editor.defaultFormatter": "stylelint.vscode-stylelint" },
+  // ---------------
+
+  "files.trimTrailingWhitespace": true, // при сохранении файла удаляет лишнии пробелы
+
+  "cSpell.language": "en, ru",
+  "cSpell.words": []
+}

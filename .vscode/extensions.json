@@ -1,0 +1,18 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=827846 to learn about workspace recommendations.
+
+  // Расширения который необходимы для корректной работы
+  "recommendations": [
+    "streetsidesoftware.code-spell-checker",
+    "streetsidesoftware.code-spell-checker-russian",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "formulahendry.auto-rename-tag",
+  ],
+  // Расширения которые по дефолту не установятся и не будут показываться в рекомендациях
+  "unwantedRecommendations": [
+    "eamodio.gitlens", // можно использовать по желанию на личной машине, для большенства не рекомендуется ибо сильно нагружает компьютер и vscode начинает лагать
+    "CoenraadS.bracket-pair-colorizer-2", // юзлесс ибо теперь по дефолту используется внутри vscode
+    "2gua.rainbow-brackets" // юзлесс ибо теперь по дефолту используется внутри vscode
+  ]
+}
