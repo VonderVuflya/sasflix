@@ -1,5 +1,6 @@
 {
-  "name": "sasflix",
+  "name": "nuxt-app",
+  "private": true,
   "type": "module",
   "scripts": {
     "build": "nuxt build",
@@ -13,15 +14,18 @@
     "stylelint:fix": "stylelint --fix --quiet ./src/assets/**/*.scss"
   },
   "dependencies": {
+    "dayjs-nuxt": "^2.1.11",
     "nuxt": "^3.13.2",
     "sass": "^1.80.3",
     "vue": "latest",
-    "vue-router": "latest"
+    "vue-router": "latest",
+    "vue-tsc": "^2.1.6"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@nuxtjs/eslint-module": "^4.1.0",
     "@nuxtjs/stylelint-module": "^5.2.0",
+    "@typescript-eslint/parser": "^6.21.0",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
