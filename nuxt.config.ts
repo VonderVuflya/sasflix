@@ -4,8 +4,8 @@ export default defineNuxtConfig({
   css: ['~/assets/scss/index.scss'],
 
   app: {
-    pageTransition: { name: 'page', mode: 'out-in' },
-    layoutTransition: { name: 'page', mode: 'out-in' },
+    // pageTransition: { name: 'page', mode: 'out-in' },
+    // layoutTransition: { name: 'page', mode: 'out-in' },
     head: {
       link: [
         {
@@ -34,5 +34,5 @@ export default defineNuxtConfig({
     typeCheck: true
   },
 
-  modules: ['dayjs-nuxt']
+  modules: ['dayjs-nuxt', 'nuxt-svgo']
 })

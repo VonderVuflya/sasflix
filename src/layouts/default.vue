@@ -1,9 +1,19 @@
 <template>
   <div class="layout">
     <div class="main-container">
-      <Text type="title">ikakprosto.ru</Text>
+      <div @mouseover="title='kakaiprosto.ru'" @mouseleave="title='ikakprosto.ru'">
+        <Text type="title">{{ title }}</Text>
+      </div>
 
-      <slot />
+      <div>
+        <slot />
+      </div>
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from 'vue'
+
+let title = ref('ikakprosto.ru')
+</script>

@@ -1,5 +1,5 @@
 <template>
-  <template v-for="publicate in publications" :key="'comment-' + publicate.id">
+  <template v-for="(publicate, index) in publications" :key="'comment-' + publicate.id">
     <div class="publicate">
       <div class="content">
         <Text type="h1">{{ publicate.title }}</Text>
@@ -8,13 +8,17 @@
 
       <div class="info-block">
         <div class="reactions">
-          <button v-on:click="handleLike">
+          <button v-on:click="handleLike(publicate.id)" :class="userReactions.get(publicate.id) && 'reaction'">
+            <IconLike />
             <Text type="caption">Like</Text>
-            <Text type="number-tab">{{ publicate.likes }}</Text>
+            <Text type="number-tab">{{ publicate.reactions.likes }}</Text>
           </button>
-          <button v-on:click="handleDislike">
+          <button
+            v-on:click="handleDislike(publicate.id)"
+            :class="userReactions.get(publicate.id) === false && 'reaction'">
+            <IconDislike />
             <Text type="caption">Trash</Text>
-            <Text type="number-tab">{{ publicate.dislike }}</Text>
+            <Text type="number-tab">{{ publicate.reactions.dislikes }}</Text>
           </button>
         </div>
 
@@ -23,7 +27,7 @@
         </button>
 
         <Text type="caption" color="ghost">
-          {{ $dayjs(publicate.createdAt).format('DD-MM-YYYY') }}
+          {{ $dayjs(new Date()).format('DD-MM-YYYY') }}
         </Text>
 
         <div class="tags">
@@ -39,29 +43,55 @@
 </template>
 
 <script setup lang="ts">
-const publications = [
-  {
-    id: '1',
-    title: 'His mother had always taught him',
-    body: 'His mother had always taught him not to ever think of himself as better than others. He\'d tried to live by this motto. He never looked down on those who were less fortunate or who had less money than him. But the stupidity of the group of people he was talking to made him change his mind.',
-    likes: 192,
-    dislike: 25,
-    createdAt: new Date().toString(),
-    tags: ['history','american', 'crime']
-  },
-  {
-    id: '2',
-    title: 'His mother had always taught him',
-    body: 'His mother had always taught him not to ever think of himself as better than others. He\'d tried to live by this motto. He never looked down on those who were less fortunate or who had less money than him. But the stupidity of the group of people he was talking to made him change his mind.',
-    likes: 192,
-    dislike: 25,
-    liked: true,
-    disliked: false,
-    createdAt: new Date().toString(),
-    tags: ['history','american', 'crime']
-  }
-]
+import { ref } from 'vue'
+import IconLike from '~/assets/icons/like.svg'
+import IconDislike from '~/assets/icons/dislike.svg'
 
-const handleLike = () => {}
-const handleDislike = () => {}
+type Tag = 'history' | 'american' | 'crime'
+type Reaction = {
+  likes: number
+  dislikes: number
+}
+type Publication = {
+  id: number
+  title: string
+  body: string
+  tags: Tag[]
+  reactions: Reaction
+  views: number
+  userId: number
+}
+const publications = ref<Publication[]>([])
+const userReactions = ref(new Map())
+
+function handleLike(id: number) {
+  if (userReactions.value.get(id) === true) {
+    return userReactions.value.delete(id)
+  }
+  return userReactions.value.set(id, true)
+}
+function handleDislike(id: number) {
+  if (userReactions.value.get(id) === false) {
+    return userReactions.value.delete(id)
+  }
+  return userReactions.value.set(id, false)
+}
+
+type Posts = {
+  posts: Publication[]
+  total: number
+  skip: number
+  limit: number
+}
+async function fetch() {
+  try {
+    const data = await $fetch<Posts>('https://dummyjson.com/posts?limit=5')
+
+    publications.value = data?.posts ?? []
+  } catch (e) {}
+}
+
+onMounted(() => {
+  fetch()
+})
 </script>
