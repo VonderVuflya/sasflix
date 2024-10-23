@@ -1,0 +1,14 @@
+.comments {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.comment {
+  display: flex;
+  gap: 8px;
+}
+
+.icon-profile {
+  width: 46px;
+}

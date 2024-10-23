@@ -1,7 +1,8 @@
 @use "fonts";
 
 @use "layout";
-@use "publications";
+@use "posts";
+@use "comments";
 
 :root {
   --color-text: rgb(5, 9, 14);

@@ -1,9 +1,9 @@
 <template>
   <div class="layout">
     <div class="main-container">
-      <div @mouseover="title='kakaiprosto.ru'" @mouseleave="title='ikakprosto.ru'">
+      <NuxtLink class="link" to="/" @mouseover="title='kakaiprosto.ru'" @mouseleave="title='ikakprosto.ru'">
         <Text type="title">{{ title }}</Text>
-      </div>
+      </NuxtLink>
 
       <div>
         <slot />
