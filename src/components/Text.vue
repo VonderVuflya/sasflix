@@ -1,15 +1,12 @@
 <template>
-  <component
-    :is="tag"
-    :class="[textClass, colorClass]"
-  >
+  <component :is="tag" :class="[textClass, colorClass]">
     <slot />
   </component>
 </template>
 
 <script setup lang="ts">
 type Props = {
-  type: 'title' | 'h1' | 'body' | 'caption' | 'number-tab',
+  type: 'title' | 'h1' | 'body' | 'caption' | 'semibold' | 'danger' | 'number-tab'
   color?: 'primary' | 'ghost'
 }
 const props = withDefaults(defineProps<Props>(), {
@@ -27,7 +24,7 @@ const tag = computed(() => {
   return 'p'
 })
 const textClass = computed(() => `text-${props.type}`)
-const colorClass = computed(() => props.color ? `color-${props.color}` : '')
+const colorClass = computed(() => (props.color ? `color-${props.color}` : ''))
 </script>
 
 <style lang="scss" scoped>
@@ -58,7 +55,16 @@ const colorClass = computed(() => props.color ? `color-${props.color}` : '')
   margin: 0;
   font-family: 'SF-Pro-Text-Regular', sans-serif;
   font-size: 14px;
+  letter-spacing: -1px;
   color: #040405;
+}
+
+.text-semibold {
+  margin: 0;
+  font-family: 'SF-Pro-Text-Semibold', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-text);
 }
 
 .text-number-tab {
@@ -66,8 +72,14 @@ const colorClass = computed(() => props.color ? `color-${props.color}` : '')
   font-family: 'SF-Pro-Text-Regular', sans-serif;
   font-size: 14px;
   letter-spacing: -1px;
-  color: #040405;
-  opacity: 0.3;
+  color: var(--color-border);
+}
+
+.text-danger {
+  margin: 0;
+  font-family: 'SF-Pro-Text-Regular', sans-serif;
+  font-size: 13px;
+  color: var(--color-danger);
 }
 
 .color-primary {

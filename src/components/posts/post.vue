@@ -19,11 +19,9 @@
         </button>
       </div>
 
-      <button class="comment-button">
-        <NuxtLink :to="'/posts/' + post.id">
-          <Text type="caption" color="primary">Open comments</Text>
-        </NuxtLink>
-      </button>
+      <NuxtLink :to="'/posts/' + post.id" class="comment-link-button">
+        <Text type="caption" color="primary">Open comments</Text>
+      </NuxtLink>
 
       <Text type="caption" color="ghost">
         {{ $dayjs(new Date()).format('DD-MM-YYYY') }}

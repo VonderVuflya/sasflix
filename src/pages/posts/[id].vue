@@ -6,11 +6,20 @@
 
     <template v-for="(comment, index) in comments?.comments" :key="'comment-' + comments.id">
       <div class="comment">
-        <IconProfile class="icon-profile" />
+        <img src="/assets/profile.svg" alt="user-profile" />
 
-        <div>
-          <Text type="body">{{ comment.user.fullName }}</Text>
-          <Text type="body">{{ comment.body }}</Text>
+        <div class="comment-content">
+          <div class="comment-info">
+            <Text type="semibold">{{ comment.user.fullName }}</Text>
+            <Text type="body">{{ comment.body }}</Text>
+          </div>
+
+          <div class="comment-options">
+            <Text type="caption" color="ghost">Today</Text>
+            <button v-on:click="handleDeleteComment(comment.id)">
+              <Text type="danger">Удалить</Text>
+            </button>
+          </div>
         </div>
       </div>
     </template>
@@ -21,8 +30,6 @@
 import { ref } from 'vue'
 import Post from '~/components/posts/post.vue'
 import type { Post as PostTypes } from '~/components/posts/posts.vue'
-
-import IconProfile from '~/assets/icons/profile.svg'
 
 const route = useRoute()
 
@@ -47,13 +54,14 @@ type CommentsDataTypes = {
 const post = ref<PostTypes>()
 const comments = ref<CommentsDataTypes>()
 
+const handleDeleteComment = (id: number) => {}
+
 async function fetch() {
   try {
     const dataPost = await $fetch<PostTypes>(`https://dummyjson.com/posts/${route.params.id}`)
-    const dataComments = await $fetch<CommentsDataTypes>(`https://dummyjson.com/posts/${route.params.id}/comments/?limit=2`)
-
-    console.log({ dataComments });
-
+    const dataComments = await $fetch<CommentsDataTypes>(
+      `https://dummyjson.com/posts/${route.params.id}/comments/?limit=2`
+    )
 
     post.value = dataPost
     comments.value = dataComments

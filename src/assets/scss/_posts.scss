@@ -62,18 +62,18 @@
   }
 }
 
-.comment-button {
-  border: none;
-  background-color: transparent;
-
+.comment-link-button {
+  display: flex;
+  align-items: center;
   height: 27px;
   padding: 0 8px;
   border-radius: 12px;
 
+  color: var(--color-primary-accent);
+  text-decoration: underline;
+
   &:hover {
-    color: var(--color-primary-accent);
     background-color: rgba(255, 107, 0, 0.08);
-    text-decoration: underline;
   }
 
   &:active {
