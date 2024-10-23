@@ -14,6 +14,7 @@
     "stylelint:fix": "stylelint --fix --quiet ./src/assets/**/*.scss"
   },
   "dependencies": {
+    "@nuxtjs/i18n": "^8.5.5",
     "dayjs-nuxt": "^2.1.11",
     "nuxt": "^3.13.2",
     "nuxt-svgo": "^4.0.6",

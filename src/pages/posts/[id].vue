@@ -2,8 +2,7 @@
   <Post v-if="post" :data="post" />
 
   <div class="comments">
-    <!-- TODO: добавить pluralize -->
-    <Text type="h1">{{ comments?.total }} комментариев</Text>
+    <Text v-if="comments?.total" type="h1">{{ $t('total-comments', { count: comments?.total ?? 0 }) }}</Text>
 
     <template v-for="(comment, index) in comments?.comments" :key="'comment-' + comments.id">
       <div class="comment">

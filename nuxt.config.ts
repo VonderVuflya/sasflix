@@ -34,5 +34,9 @@ export default defineNuxtConfig({
     typeCheck: true
   },
 
-  modules: ['dayjs-nuxt', 'nuxt-svgo']
+  i18n: {
+    vueI18n: './i18n.config.ts'
+  },
+
+  modules: ['dayjs-nuxt', 'nuxt-svgo', '@nuxtjs/i18n']
 })
